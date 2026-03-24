@@ -17,7 +17,6 @@ public class MixedNumber extends Fraction {
         this.whole = whole;
     }
 
-    // convert improper fraction to mixed
     public MixedNumber(Fraction fraction) {
         int num = fraction.getNumerator();
         int den = fraction.getDenominator();
@@ -44,13 +43,11 @@ public class MixedNumber extends Fraction {
         return new Fraction(getNumerator(), getDenominator());
     }
 
-    // REQUIRED BY UML
     public Fraction toFraction() {
         int num = whole * getDenominator() + getNumerator();
         return new Fraction(num, getDenominator());
     }
 
-    // REQUIRED OPERATIONS (MixedNumber param)
     public MixedNumber add(MixedNumber other) {
         Fraction result = this.toFraction().add(other.toFraction());
         return new MixedNumber(result);
