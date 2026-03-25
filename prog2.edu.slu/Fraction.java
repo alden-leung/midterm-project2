@@ -27,7 +27,7 @@ public class Fraction {
     // STRING CONSTRUCTOR
     public Fraction(String input) {
         input = input.trim();
-
+        // PARA PWEDE FRACTIONS
         if (input.contains("/")) {
             String[] parts = input.split("/");
             this.numerator = Integer.parseInt(parts[0]);
