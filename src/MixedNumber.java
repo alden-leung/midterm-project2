@@ -6,6 +6,7 @@ public class MixedNumber extends Fraction {
         super();
         this.whole = 0;
     }
+    
 
     public MixedNumber(int whole, Fraction fraction) {
         super(fraction.getNumerator(), fraction.getDenominator());
@@ -71,6 +72,9 @@ public class MixedNumber extends Fraction {
     public String toString() {
         if (getNumerator() == 0) {
             return "" + whole;
+        }
+        if (whole == 0) {
+            return super.toString();
         }
         return whole + " " + getNumerator() + "/" + getDenominator();
     }
