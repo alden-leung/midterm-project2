@@ -1,3 +1,7 @@
+package prog2.edu.slu;
+
+import prog2.edu.slu.pregroup01.Fraction;
+
 import java.util.Scanner;
 
 public class FractionTester {
@@ -55,7 +59,7 @@ public class FractionTester {
 
             history[count++] = result;
 
-            System.out.println("Result (Fraction): " + result);
+            System.out.println("Result (prog2.edu.slu.pregroup01.Fraction): " + result);
             System.out.println("Result (Decimal): " + result.toDouble());
 
             if (count >= 100) {

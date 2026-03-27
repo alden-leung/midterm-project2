@@ -1,3 +1,5 @@
+package prog2.edu.slu;
+
 public class Fraction {
     private int numerator;
     private int denominator;
