@@ -1,5 +1,6 @@
 import java.util.Scanner;
-
+import javax.swing.*;
+import java.awt.*;
 public class FractionTester {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
@@ -69,5 +70,22 @@ public class FractionTester {
             System.out.println((i + 1) + ": " + history[i]);
         }
         sc.close();
+        
+        //Ui
+        JFrame frame = new JFrame("Fraction Calculator")
+        frame.setSize(450,450);
+        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        frame.setLayout(new BorderLayout());
+        frame.getContentPane().setBackground(Color.Black);
+        
+        display = new JtextField("0");
+        display.setFont(new Font("Arial", Font.BOLD, 28));
+        display.setForeground(Color.WHITE);
+        display.setBackground(Color.BLACK);
+        display.setHorizonAligent(JtextField.RIGHT);
+        display.setBorder(BorderFactory.creatEmptyBorder(10,10,10,10));
+        frame.add(display, BorderLayout.NORTH);
+        
+
     }
 }
