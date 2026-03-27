@@ -88,7 +88,7 @@ public class FractionTester {
         frame.add(display, BorderLayout.NORTH);
 
         frame.setVisible(true);
-   
+     
      
     }    
 }
