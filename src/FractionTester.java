@@ -1,6 +1,7 @@
 import java.util.Scanner;
 
 public class FractionTester {
+    private static JTextField display;
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
 
@@ -74,5 +75,22 @@ public class FractionTester {
         int numerator = (int) Math.round(value * scale);
         int denominator = scale;
         return new Fraction(numerator, denominator);
+    }
+    JFrame frame = new JFrame("Fraction Calculator");
+        frame.setSize(450, 450);
+        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        frame.setLayout(new BorderLayout());
+        frame.getContentPane().setBackground(Color.BLACK);
+
+        display = new JTextField("0"); 
+        display.setFont(new Font("Arial", Font.BOLD, 28));
+        display.setForeground(Color.WHITE);
+        display.setBackground(Color.BLACK);
+        display.setHorizontalAlignment(JTextField.RIGHT);
+        display.setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10));
+
+        frame.add(display, BorderLayout.NORTH);
+
+        frame.setVisible(true);
     }
 }
