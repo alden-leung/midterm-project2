@@ -50,7 +50,7 @@ public class FractionTester {
                 case 4:
                     result = f1.divideBy(f2);
                     break;
-                default:
+                 default:
                     System.out.println("Invalid choice.");
                     continue;
             }
@@ -79,7 +79,7 @@ public class FractionTester {
         frame.setLayout(new BorderLayout());
         frame.getContentPane().setBackground(Color.BLACK);
         
-        display = new JtextField("0");
+        display = new JTextField("0");
         display.setFont(new Font("Arial", Font.BOLD, 28));
         display.setForeground(Color.WHITE);
         display.setBackground(Color.BLACK);
@@ -88,7 +88,6 @@ public class FractionTester {
         
         JPanel panel = new Jpanel(new Gridlayout(5,4,10,10));
         panel.setBackground(Color.BLACK);
-        panel.setBorder(BorderFactory.Create)
-
+      
     }
 }
