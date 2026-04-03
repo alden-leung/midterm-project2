@@ -93,13 +93,12 @@ public class FractionTester {
         panel.setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10));
 
         String[] buttons = {
-                "C", "", "", "/",
-                "7", "8", "9", "*",
-                "4", "5", "6", "-",
-                "1", "2", "3", "+",
-                "0", "/", "=", "=",
-                "Frac", "Mixed", "Decimal", ""
-        };
+        "Del", "C", "%", "/",
+        "7", "8", "9", "*",
+        "4", "5", "6", "-",
+        "1", "2", "3", "+",
+        "", "0", "", "=",
+        "Frac", "Mixed", "ToDouble", ""
 
         for (String text : buttons) {
             if (text.equals("")) {
