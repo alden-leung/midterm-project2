@@ -98,7 +98,7 @@ public class FractionTester {
                 "4", "5", "6", "-",
                 "1", "2", "3", "+",
                 "0", "/", "=", "=",
-                "Frac", "Mixed", "ToDouble", ""
+                "Frac", "Mixed", "Decimal", ""
         };
 
         for (String text : buttons) {
