@@ -73,22 +73,60 @@ public class FractionTester {
         sc.close();
         
         JFrame frame = new JFrame("Fraction Calculator");
-        frame.setSize(450, 450);
+        frame.setSize(350, 550);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        frame.setLayout(new BorderLayout());
+        frame.setLayout(new BorderLayout(10, 10));
         frame.getContentPane().setBackground(Color.BLACK);
-
-        display = new JTextField("0");
-        display.setFont(new Font("Arial", Font.BOLD, 28));
+      
+        JTextField display = new JTextField("0");
+        display.setFont(new Font("Arial", Font.BOLD, 36));
         display.setForeground(Color.WHITE);
         display.setBackground(Color.BLACK);
         display.setHorizontalAlignment(JTextField.RIGHT);
-        display.setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10));
+        display.setBorder(BorderFactory.createEmptyBorder(20, 10, 20, 10));
 
         frame.add(display, BorderLayout.NORTH);
 
+        JPanel panel = new JPanel();
+        panel.setLayout(new GridLayout(6, 4, 10, 10));
+        panel.setBackground(Color.BLACK);
+        panel.setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10));
+
+        String[] buttons = {
+                "C", "", "", "/",
+                "7", "8", "9", "*",
+                "4", "5", "6", "-",
+                "1", "2", "3", "+",
+                "0", "/", "=", "=",
+                "Frac", "Mixed", "ToDouble", ""
+        };
+
+        for (String text : buttons) {
+            if (text.equals("")) {
+                panel.add(new JLabel()); // empty space
+                continue;
+            }
+
+            JButton btn = new JButton(text);
+            btn.setFont(new Font("Arial", Font.BOLD, 16));
+            btn.setFocusPainted(false);
+
+            if (text.matches("[0-9]")) {
+                btn.setBackground(new Color(50, 50, 50));
+                btn.setForeground(Color.WHITE);
+            } else if (text.equals("=")) {
+                btn.setBackground(Color.ORANGE);
+                btn.setForeground(Color.WHITE);
+            } else {
+                btn.setBackground(new Color(80, 80, 80));
+                btn.setForeground(Color.WHITE);
+            }
+
+            panel.add(btn);
+        }
+
+        frame.add(panel, BorderLayout.CENTER);
         frame.setVisible(true);
-     
      
     }    
 }
