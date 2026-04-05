@@ -133,7 +133,7 @@ public class FractionTester {
         }
 
         frame.add(panel, BorderLayout.CENTER);
-
+        frame.setLocationRelativeTo(null);
         frame.setVisible(true);
      
     }    
