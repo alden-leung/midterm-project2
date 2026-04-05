@@ -1,3 +1,5 @@
+package prog2.edu.slu.pregroup01;
+
 public class Fraction {
     private int numerator;
     private int denominator;
@@ -8,7 +10,7 @@ public class Fraction {
         this.denominator = 1;
     }
 
-    // Whole number
+    // Whole number constructor
     public Fraction(int wholeNumVal) {
         this.numerator = wholeNumVal;
         this.denominator = 1;
@@ -21,28 +23,6 @@ public class Fraction {
         }
         this.numerator = numerator;
         this.denominator = denominator;
-        simplify();
-    }
-
-    // STRING CONSTRUCTOR
-    public Fraction(String input) {
-        input = input.trim();
-        // PARA PWEDE FRACTIONS
-        if (input.contains("/")) {
-            String[] parts = input.split("/");
-            this.numerator = Integer.parseInt(parts[0]);
-            this.denominator = Integer.parseInt(parts[1]);
-        } else {
-            double value = Double.parseDouble(input);
-            int scale = 10000;
-            this.numerator = (int) Math.round(value * scale);
-            this.denominator = scale;
-        }
-
-        if (denominator == 0) {
-            throw new ArithmeticException("Denominator cannot be zero.");
-        }
-
         simplify();
     }
 
@@ -67,12 +47,14 @@ public class Fraction {
         simplify();
     }
 
+    // Convert to string
     public String toString() {
-        if (numerator == 0) return "0";
         if (denominator == 1) return numerator + "";
+        if (numerator == 0) return "0";
         return numerator + "/" + denominator;
     }
 
+    // Convert to double
     public double toDouble() {
         return (double) numerator / denominator;
     }
@@ -110,18 +92,20 @@ public class Fraction {
         return new Fraction(num, den);
     }
 
-    // Simplify
+    // Simplify fraction
     private void simplify() {
         int gcd = gcd(Math.abs(numerator), Math.abs(denominator));
         numerator /= gcd;
         denominator /= gcd;
 
+        // denominator positive
         if (denominator < 0) {
             numerator *= -1;
             denominator *= -1;
         }
     }
 
+    // GCD
     private int gcd(int a, int b) {
         return (b == 0) ? a : gcd(b, a % b);
     }
