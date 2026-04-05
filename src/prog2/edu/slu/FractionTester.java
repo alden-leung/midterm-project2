@@ -39,7 +39,7 @@ public class FractionTester {
                 f2 = extractInput(sc.nextLine());
 
 
-            } catch (IllegalArgumentException exception) {
+            } catch (InvalidMixedNumberException exception) {
                 System.out.println(exception.getMessage());
                 continue;
             }
@@ -84,9 +84,9 @@ public class FractionTester {
         sc.close();
     }
 
-    private static MixedNumber extractInput(String input) throws IllegalArgumentException {
+    private static MixedNumber extractInput(String input) throws InvalidMixedNumberException {
         if (input.isEmpty()) {
-            throw new IllegalArgumentException("Input cannot be empty");
+            throw new InvalidMixedNumberException("Input cannot be empty");
         }
 
         int whole = 0;
@@ -96,18 +96,18 @@ public class FractionTester {
         try {
             if (input.contains(" ")) {
                 String[] parts = input.split(" ");
-                if (parts.length != 2) throw new IllegalArgumentException("Invalid mixed fraction format");
+                if (parts.length != 2) throw new InvalidMixedNumberException("Invalid mixed fraction format");
 
                 whole = Integer.parseInt(parts[0].trim());
 
                 String[] fracParts = parts[1].split("/");
-                if (fracParts.length != 2) throw new IllegalArgumentException("Invalid fraction format");
+                if (fracParts.length != 2) throw new InvalidMixedNumberException("Invalid fraction format");
 
                 numerator = Integer.parseInt(fracParts[0].trim());
                 denominator = Integer.parseInt(fracParts[1].trim());
             } else if (input.contains("/")) {
                 String[] fracParts = input.split("/");
-                if (fracParts.length != 2) throw new IllegalArgumentException("Invalid fraction format");
+                if (fracParts.length != 2) throw new InvalidMixedNumberException("Invalid fraction format");
 
                 numerator = Integer.parseInt(fracParts[0].trim());
                 denominator = Integer.parseInt(fracParts[1].trim());
@@ -118,9 +118,15 @@ public class FractionTester {
             Fraction fractionPart = new Fraction(numerator, denominator);
             return new MixedNumber(whole, fractionPart);
         } catch (NumberFormatException e) {
-            throw new IllegalArgumentException("Invalid number format: " + input);
+            throw new InvalidMixedNumberException("Invalid number format: " + input);
         } catch (ArithmeticException e) {
-            throw new IllegalArgumentException("Denominator cannot be zero.");
+            throw new InvalidMixedNumberException("Denominator cannot be zero.");
+        }
+    }
+
+    public static class InvalidMixedNumberException extends Exception {
+        public InvalidMixedNumberException(String message) {
+            super(message);
         }
     }
 }

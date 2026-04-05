@@ -6,13 +6,26 @@ import javax.swing.*;
 import javax.swing.border.EmptyBorder;
 import java.awt.*;
 
+/**
+ * A GUI-based Fraction Calculator using Swing.
+ *
+ * Provides input fields for two fractions, a dropdown to select an operation,
+ * and displays the result as both a mixed fraction and a decimal.
+ */
 public class Calculator extends JFrame {
 
+    /**
+     * Main method to launch the calculator.
+     * @param args Command-line arguments (not used).
+     */
     public static void main(String[] args) {
         Calculator app = new Calculator();
         app.run();
     }
 
+    /**
+     * Initializes and displays the main frame of the calculator
+     */
     private void run() {
         this.setTitle("Calculator");
         this.setSize(650, 340);
@@ -26,6 +39,9 @@ public class Calculator extends JFrame {
         this.setLocationRelativeTo(null);
     }
 
+    /**
+     * Initializes all Swing components, layouts, and styling for the calculator.
+     */
     private void initializeComponents() {
         JPanel mainPanel = new JPanel(new BorderLayout(10, 10));
         mainPanel.setBorder(new EmptyBorder(20, 20, 20, 20));
@@ -131,6 +147,11 @@ public class Calculator extends JFrame {
         this.add(mainPanel);
     }
 
+    /**
+     * Styles a JTextField with font, size, and alignment.
+     * @param textField The text field to style.
+     * @param editable Whether the field is editable or not.
+     */
     private void styleTextField(JTextField textField, boolean editable) {
         textField.setFont(new Font("Arial", Font.PLAIN, 20));
         textField.setPreferredSize(new Dimension(200, 40));
@@ -146,6 +167,10 @@ public class Calculator extends JFrame {
         }
     }
 
+    /**
+     * Styles a JComboBox with font and centered text alignment.
+     * @param dropdown The JComboBox to style.
+     */
     private void styleDropdown(JComboBox dropdown) {
         dropdown.setFont(new Font("Arial", Font.BOLD, 20));
 
@@ -162,12 +187,21 @@ public class Calculator extends JFrame {
         dropdown.setPreferredSize(new Dimension(120, 50));
     }
 
+    /**
+     * Styles a JButton with font and size.
+     * @param button The button to style.
+     */
     private void styleButton(JButton button) {
         button.setFont(new Font("Arial", Font.PLAIN, 20));
         button.setMaximumSize(new Dimension(Integer.MAX_VALUE, 50));
         button.setAlignmentX(Component.CENTER_ALIGNMENT);
     }
 
+    /**
+     * Styles a JLabel either as a header or as a standard label.
+     * @param label The label to style.
+     * @param isHeader Whether the label is a header or not.
+     */
     private void styleLabel(JLabel label, boolean isHeader) {
         if (isHeader) {
             label.setHorizontalAlignment(JLabel.CENTER);
@@ -177,27 +211,32 @@ public class Calculator extends JFrame {
         }
     }
 
+    /**
+     * Performs the selected arithmetic operation on two mixed numbers.
+     * @param firstFraction The first mixed number.
+     * @param secondFraction The second mixed number.
+     * @param operation The operation plus, minus, multiply, and divide in symbols (+, -, x, /).
+     * @return The result of the operation in the form of a MixedNumber.
+     */
     private MixedNumber calculate(MixedNumber firstFraction, MixedNumber secondFraction, String operation) {
         MixedNumber result = null;
 
         switch (operation) {
-            case "+" -> {
-                result = firstFraction.add(secondFraction);
-            }
-            case "-" -> {
-                result = firstFraction.subtract(secondFraction);
-            }
-            case "x" -> {
-                result = firstFraction.multiplyBy(secondFraction);
-            }
-            case "/" -> {
-                result = firstFraction.divideBy(secondFraction);
-            }
+            case "+" -> result = firstFraction.add(secondFraction);
+            case "-" -> result = firstFraction.subtract(secondFraction);
+            case "x" -> result = firstFraction.multiplyBy(secondFraction);
+            case "/" -> result = firstFraction.divideBy(secondFraction);
         }
 
         return result;
     }
 
+    /**
+     * Extracts a MixedNumber from a JTextField input.
+     * @param textField The text field containing the input.
+     * @return The corresponding MixedNumber.
+     * @throws InvalidMixedNumberException If the input is invalid.
+     */
     private MixedNumber extractInput(JTextField textField) throws InvalidMixedNumberException {
         String input = textField.getText().trim();
 
@@ -240,7 +279,14 @@ public class Calculator extends JFrame {
         }
     }
 
-    public class InvalidMixedNumberException extends Exception {
+    /**
+     * Custom exception for invalid mixed number input.
+     */
+    public static class InvalidMixedNumberException extends Exception {
+        /**
+         * Constructs the exception with a message.
+         * @param message The error message.
+         */
         public InvalidMixedNumberException(String message) {
             super(message);
         }
